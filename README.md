@@ -76,3 +76,13 @@ Liviu Spînu
 
 LinkedIn:
 https://www.linkedin.com/in/liviu005/
+
+# Screenshots
+
+## Homepage
+
+![Homepage](screenshots/homepage.png)
+
+## Event Details
+
+![Event Details](screenshots/event-details.png)
