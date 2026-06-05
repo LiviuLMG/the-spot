@@ -1,0 +1,209 @@
+/* Spațiere pentru a nu se lipi de header */
+.my-events-container {
+    padding-top: 4rem;
+    min-height: 70vh; /* Păstrează footer-ul jos chiar dacă nu sunt evenimente */
+}
+
+.page-title {
+    color: #ffffff;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+/* --- DARK CARDS PENTRU EVENIMENTE --- */
+.my-event-card {
+    background-color: #0f172a; /* Albastru foarte închis */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.my-event-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 204, 255, 0.15); /* Umbră cyan subtilă */
+    border-color: rgba(0, 204, 255, 0.3);
+}
+
+
+
+
+/* Container-ul Imaginii */
+.my-event-img-wrapper {
+    height: 220px;
+    position: relative;
+    overflow: hidden; /* Nu lasă blur-ul să iasă afară */
+    background-color: #020617; /* Un fundal de bază închis la culoare */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 1. Background-ul fals (cel blurat) */
+.blurred-bg {
+    position: absolute;
+    top: -20px; left: -20px; right: -20px; bottom: -20px; /* Mai mare decât containerul ca să nu lase margini la blur */
+    background-size: cover;
+    background-position: center;
+    filter: blur(15px) brightness(40%); /* Brightness mai mic ca să iasă în evidență textul și poza */
+    z-index: 1; /* Stă cel mai jos */
+    transition: transform 0.5s ease; /* Îl animăm și pe el un pic */
+}
+
+/* 2. Imaginea centrală vizibilă */
+.my-event-img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain; /* O ține întreagă indiferent de format */
+    position: relative; /* Ca să țină cont de z-index */
+    z-index: 2; /* Stă peste blur, dar sub badge-uri */
+    transition: transform 0.5s ease; /* Animația originală */
+}
+
+/* Efectul de Hover (Card peste tot) */
+.my-event-card:hover .blurred-bg {
+    transform: scale(1.1); /* Efect fin pe fundal */
+}
+
+.my-event-card:hover .my-event-img {
+    transform: scale(1.05); /* Efect fin pe poza principală */
+}
+
+/* --- BADGE-URILE --- (Le mărim z-index-ul ca să fim siguri 100% că stau PESTE imagine) */
+.status-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 10; /* Asigură vizibilitatea */
+}
+
+/* ... clasele .status-upcoming și .status-past rămân la fel ... */
+
+.cat-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background-color: rgba(2, 6, 23, 0.75);
+    border: 1px solid #00ccff;
+    color: #00ccff;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 10; /* Asigură vizibilitatea */
+}
+
+
+
+/* Badge-ul de status (Upcoming / Past) */
+.status-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.status-upcoming {
+    background-color: rgba(40, 192, 141, 0.2);
+    color: #28c08d;
+    border: 1px solid rgba(40, 192, 141, 0.3);
+}
+
+.status-past {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #94a3b8;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Badge Categorie (Dreapta Sus) */
+.cat-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background-color: rgba(2, 6, 23, 0.75);
+    border: 1px solid #00ccff;
+    color: #00ccff;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+/* Conținutul cardului */
+.my-event-body {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.my-event-date {
+    color: #00ccff;
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+}
+
+.my-event-title {
+    color: #ffffff;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.my-event-location {
+    color: #64748b;
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+}
+
+/* Butonul de administrare din card */
+.btn-manage {
+    margin-top: auto; /* Împinge butonul mereu jos */
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #e2e8f0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn-manage:hover {
+    background-color: #00ccff;
+    color: #020617;
+    border-color: #00ccff;
+}
+
+/* --- EMPTY STATE (Când nu ai evenimente) --- */
+.empty-state-card {
+    background-color: #0f172a;
+    border: 1px dashed rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 4rem 2rem;
+}

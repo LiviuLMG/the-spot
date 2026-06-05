@@ -1,0 +1,456 @@
+.navbar-custom {
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding: 12px 0;
+    background: linear-gradient(to bottom, #020617, #111827); 
+    opacity: 0.95;
+}
+
+.navbar-brand img { height: 32px; }
+
+/* BUTONUL CUSTOM (Events in...) */
+.btn-glass {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    font-size: 0.95rem;
+}
+
+.btn-glass:hover, .show > .btn-glass.dropdown-toggle {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Ascundem săgeata default Bootstrap */
+.dropdown-toggle::after { display: none !important; }
+
+/* ANIMAȚIE SĂGEATĂ DROPDOWN */
+.rotate-icon {
+    transition: transform 0.3s ease; 
+}
+.dropdown-toggle.show .rotate-icon {
+    transform: rotate(-180deg);
+}
+
+/* DROPDOWN MENU */
+.dropdown-item-custom {
+    color: #cbd5e1; 
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: background 0.2s;
+}
+.dropdown-item-custom:hover {
+    background-color: rgba(255,255,255,0.05);
+    color: white;
+}
+.dropdown-item-custom.active-city {
+    color: #22d3ee; 
+    background-color: transparent;
+}
+
+/* --- STILURI DROPDOWN UNIFICATE & FIXATE --- */
+.dropdown-menu-custom,
+.dropdown-menu-custom-account {
+    background-color: #1e293b;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 8px;
+    margin-top: 10px !important; 
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+    display: block !important; 
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-15px) scaleY(0.95); 
+    transform-origin: top right; 
+    transition: all 0.2s cubic-bezier(0.165, 0.84, 0.44, 1); 
+}
+
+.dropdown-menu-custom {
+    min-width: 195px;
+    transform-origin: top left; 
+}
+
+.dropdown-menu-custom-account {
+    min-width: 160px; 
+    right: 0 !important; 
+    left: auto !important;
+}
+
+.dropdown-menu-custom.show,
+.dropdown-menu-custom-account.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scaleY(1);
+}
+
+.dropdown-menu-custom li,
+.dropdown-menu-custom-account li {
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.dropdown-menu-custom.show li,
+.dropdown-menu-custom-account.show li {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.dropdown-menu-custom.show li:nth-child(1), .dropdown-menu-custom-account.show li:nth-child(1) { transition-delay: 0.05s; }
+.dropdown-menu-custom.show li:nth-child(2), .dropdown-menu-custom-account.show li:nth-child(2) { transition-delay: 0.1s; }
+.dropdown-menu-custom.show li:nth-child(3), .dropdown-menu-custom-account.show li:nth-child(3) { transition-delay: 0.15s; }
+.dropdown-menu-custom.show li:nth-child(4), .dropdown-menu-custom-account.show li:nth-child(4) { transition-delay: 0.2s; }
+.dropdown-menu-custom.show li:nth-child(5), .dropdown-menu-custom-account.show li:nth-child(5) { transition-delay: 0.25s; }
+.dropdown-menu-custom.show li:nth-child(6), .dropdown-menu-custom-account.show li:nth-child(6) { transition-delay: 0.30s; }
+.dropdown-menu-custom.show li:nth-child(7), .dropdown-menu-custom-account.show li:nth-child(7) { transition-delay: 0.35s; }
+.dropdown-menu-custom.show li:nth-child(8), .dropdown-menu-custom-account.show li:nth-child(8) { transition-delay: 0.40s; }
+
+.dropdown-menu.show,
+.dropdown-menu-account.show {
+    animation: dropdownSlide 0.3s ease-out forwards;
+}
+
+/* SEARCH BAR ROTUNJIT */
+.search-input {
+    background-color: rgba(255, 255, 255, 0.05); 
+    border: 1px solid rgba(255, 255, 255, 0.1);  
+    border-radius: 50px; 
+    padding: 10px 20px 10px 48px; 
+    color: white;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+.search-input::placeholder { color: rgba(255, 255, 255, 0.4); }
+.search-input:focus {
+    background-color: rgba(255, 255, 255, 0.1); 
+    border-color: rgba(255, 255, 255, 0.3);
+    color: white;
+    box-shadow: none; 
+}
+.search-icon-custom {
+    position: absolute;
+    left: 18px; 
+    top: 50%;   
+    transform: translateY(-50%); 
+    color: rgba(255, 255, 255, 0.4);
+    pointer-events: none; 
+    z-index: 5;
+}
+
+/* Containerul plutitor pentru rezultatele live */
+#live-search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    z-index: 1050;
+    margin-top: 10px;
+    max-height: 350px;
+    overflow-y: auto;
+    display: none; /* Ascuns implicit */
+    border: 1px solid #eee;
+}
+
+/* Aspectul unui singur rezultat din listă */
+.live-search-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    border-bottom: 1px solid #f1f5f9;
+    text-decoration: none;
+    color: #1e293b;
+    transition: background-color 0.2s ease;
+}
+
+.live-search-item:last-child {
+    border-bottom: none;
+}
+
+.live-search-item:hover {
+    background-color: #f8fafc;
+    color: #00ccff; /* Cyan-ul tău */
+}
+
+/* Imaginea mică din stânga */
+.live-search-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 6px;
+    object-fit: cover;
+    margin-right: 12px;
+}
+
+/* Detaliile text */
+.live-search-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.live-search-title {
+    font-weight: 600;
+    font-size: 0.9rem;
+    line-height: 1.2;
+}
+
+.live-search-date {
+    font-size: 0.75rem;
+    margin-top: 3px;
+}
+
+/* --- BURGER MENU #nav-icon3 FIXAT --- */
+
+#nav-icon3 {
+  width: 30px;     /* Lățimea butonului */
+  height: 22px;     /* Înălțimea butonului */
+  position: relative;
+  margin: 0 auto;
+  transform: rotate(0deg);
+  transition: .5s ease-in-out;
+  cursor: pointer;
+}
+
+/* LINIILE (Spans) */
+#nav-icon3 span {
+  display: block;
+  position: absolute;
+  height: 3px;      /* Grosimea liniei */
+  width: 100%;
+  background: white; /* CULOAREA LINIEI */
+  border-radius: 9px;
+  opacity: 1;
+  left: 0;
+  transform: rotate(0deg);
+  transition: .25s ease-in-out;
+}
+
+/* POZIȚIONARE LINII (Starea Inițială - Burger) */
+#nav-icon3 span:nth-child(1) {
+  top: 0px;
+}
+
+#nav-icon3 span:nth-child(2), 
+#nav-icon3 span:nth-child(3) {
+  top: 9px; 
+}
+
+#nav-icon3 span:nth-child(4) {
+  top: 18px;
+}
+
+/* STAREA ACTIVĂ (Când meniul e DESCHIS) */
+.navbar-toggler:not(.collapsed) #nav-icon3 span:nth-child(1) {
+  top: 9px;
+  width: 0%;
+  left: 50%;
+}
+
+.navbar-toggler:not(.collapsed) #nav-icon3 span:nth-child(2) {
+  transform: rotate(45deg);
+}
+
+.navbar-toggler:not(.collapsed) #nav-icon3 span:nth-child(3) {
+  transform: rotate(-45deg);
+}
+
+.navbar-toggler:not(.collapsed) #nav-icon3 span:nth-child(4) {
+  top: 9px;
+  width: 0%;
+  left: 50%;
+}
+
+/* BUTON LOGIN */
+.btn-login-custom {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;                
+    padding: 0 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    background-color: transparent; 
+    color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.2); 
+    transition: all 0.3s ease;
+}
+.btn-login-custom:hover {
+    background-color: rgba(255, 255, 255, 0.1); 
+    border-color: rgba(255, 255, 255, 0.8);
+    color: white;
+}
+
+/* BUTON SIGN UP */
+.btn {
+    background-image: linear-gradient(to right, #0ea5e9 0%, #d946ef 51%, #0ea5e9 100%);
+    background-size: 200% auto; 
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.4s; 
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+}
+.btn:hover {
+    background-position: right center; 
+    color: #fff;
+    box-shadow: 0 10px 20px rgba(217, 70, 239, 0.4); 
+}
+.btn:active { box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
+
+footer { margin-top: auto; }
+
+/* --- STILURI MOBILE --- */
+.mobile-city-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.city-chip {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.7);
+    padding: 8px 16px;
+    border-radius: 20px; 
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: 0.2s;
+}
+
+.city-chip.active {
+    background-color: rgba(14, 165, 233, 0.2); /* Cyan transparent */
+    border-color: #0ea5e9;
+    color: #22d3ee;
+}
+
+.city-chip:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: white;
+}
+
+.btn-mobile-login {
+    width: 100%;
+    padding: 12px;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: white;
+    border-radius: 12px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+}
+
+/* Refolosim gradientul tău pentru mobil */
+.btn-mobile-signup {
+    width: 100%;
+    padding: 12px;
+    background-image: linear-gradient(to right, #0ea5e9 0%, #d946ef 51%, #0ea5e9 100%);
+    background-size: 200% auto;
+    border: none;
+    color: white;
+    border-radius: 12px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    transition: 0.4s;
+}
+.btn-mobile-signup:hover { background-position: right center; color: white; }
+
+/* --- HEADER AVATARS --- */
+.header-avatar-desktop {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    background-color: #1e293b;
+}
+
+.header-avatar-mobile {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    background-color: #1e293b;
+}
+
+
+
+
+
+
+
+/* --- SCROLL PENTRU LISTA DE ORAȘE --- */
+#cities-dropdown {
+    max-height: 250px; /* Limitează înălțimea la aprox 4-5 elemente */
+    overflow-y: auto;  /* Adaugă scroll vertical dacă se depășește limita */
+    overflow-x: hidden; /* Previne scroll-ul orizontal accidental */
+}
+
+/* Stiluri pentru a personaliza bara de scroll (Scrollbar) pe webkit (Chrome, Safari, Edge) */
+#cities-dropdown::-webkit-scrollbar {
+    width: 6px;
+}
+
+#cities-dropdown::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#cities-dropdown::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+}
+
+#cities-dropdown::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+
+
+
+
+
+
+/* --- STILURI MOBILE --- */
+.mobile-city-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+    /* Adăugările pentru scroll limitat pe mobil */
+    max-height: 140px; /* Lasă loc cam pentru 3-4 rânduri de butoane */
+    overflow-y: auto;
+    padding-right: 5px; /* Spațiu mic să nu se suprapună textul cu bara de scroll */
+}
+
+/* Scrollbar subțire și elegant pentru meniul de mobil */
+.mobile-city-chips::-webkit-scrollbar {
+    width: 4px; /* Mai subțire pentru ecrane de telefon */
+}
+.mobile-city-chips::-webkit-scrollbar-track {
+    background: transparent;
+}
+.mobile-city-chips::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+}
+.mobile-city-chips::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+}

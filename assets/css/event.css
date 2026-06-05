@@ -1,0 +1,283 @@
+/* --- HERO SECTION BLURAT --- */
+.event-hero-section {
+    position: relative;
+    width: 100%;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    background-color: #020617;
+    /* Fundal de siguranță */
+}
+
+/* Containerul fundalului blurat - tăiat fix pe mărimea hero-ului */
+.event-hero-bg-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.event-hero-bg {
+    position: absolute;
+    /* Supradimensionăm imaginea pentru ca marginea blurului să iasă din cadru */
+    top: -20px;
+    left: -20px;
+    right: -20px;
+    bottom: -20px;
+    background-size: cover;
+    background-position: center;
+    filter: blur(10px) brightness(40%);
+    /* Blur puternic și întunecat pentru contrast bun cu textul alb */
+    -webkit-filter: blur(10px) brightness(40%);
+}
+
+/* Gradientul deasupra fundalului blurat (face trecerea către corpul paginii) */
+.event-hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(2, 6, 23, 0.2) 0%, rgba(2, 6, 23, 1) 100%);
+    z-index: 2;
+}
+
+
+
+/* --- AFIȘUL (Poster) + Efect Hover --- */
+.event-poster-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 320px;
+    aspect-ratio: 3 / 4;
+    border-radius: 16px;
+    border: 2px solid rgb(0, 65, 82);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 204, 255, 0.15);
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.event-poster-wrapper::before {
+    content: "";
+    position: absolute;
+    top: -10%;
+    left: -10%;
+    right: -10%;
+    bottom: -10%;
+    background-image: inherit;
+    background-size: cover;
+    background-position: center;
+    filter: blur(10px) brightness(50%);
+    -webkit-filter: blur(10px) brightness(50%);
+    z-index: 1;
+    transition: transform 0.5s ease;
+}
+
+.event-poster {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    position: relative;
+    /* Foarte important ca să stea peste ::before */
+    z-index: 2;
+    transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.event-poster-wrapper:hover .event-poster {
+    transform: scale(1.05);
+}
+
+.event-poster-wrapper:hover::before {
+    transform: scale(1.1);
+}
+
+
+
+/* --- ETICHETE ȘI META DATE --- */
+.custom-badge-category {
+    background-color: rgba(0, 204, 255, 0.15);
+    color: #00ccff;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.meta-box {
+    background-color: #111827;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 10px 20px 10px 15px;
+    border-radius: 16px;
+}
+
+.meta-icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background-color: rgba(0, 204, 255, 0.05);
+    border-radius: 50%;
+    margin-right: 12px;
+}
+
+.meta-icon {
+    color: #00ccff;
+    font-size: 1.1rem;
+}
+
+.meta-label {
+    display: block;
+    color: #64748b;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 2px;
+}
+
+.meta-value {
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 1.1rem;
+    line-height: 1;
+}
+
+/* --- CUSTOM PADDING PENTRU DESCRIERE --- */
+@media (min-width: 768px) {
+    .custom-p-md {
+        padding: 2rem !important;
+    }
+}
+
+/* --- CARDURILE ÎNCHISE (Dark Cards) --- */
+.dark-card {
+    background-color: #090e20;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+}
+
+.card-label {
+    color: #64748b;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.event-description {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #94a3b8;
+}
+
+/* --- PANOUL DE ADMIN --- */
+.admin-card {
+    background-color: #020617;
+    border: 1px solid rgba(0, 204, 255, 0.15);
+}
+
+.btn-admin-edit {
+    background-color: transparent;
+    border: 1px solid #0086a8;
+    color: #0086a8;
+    background-size: 200% auto;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.4s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-admin-edit:hover {
+    background-color: rgba(0, 134, 168, 0.436);
+    color: #fff;
+}
+
+.btn-admin-delete {
+    background-color: transparent;
+    border: 1px solid #ef4444;
+    color: #ef4444;
+    background-size: 200% auto;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.4s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-admin-delete:hover {
+    background-color: rgba(239, 68, 68, 0.436);
+    color: #fff;
+}
+
+/* --- BUTOANE PRINCIPALE & DREAPTA --- */
+.text-cyan {
+    color: #00ccff !important;
+}
+
+.btn-cyan-glow {
+    background-color: #00ccff;
+    color: #020617 !important;
+    border: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 204, 255, 0.4);
+}
+
+.btn-cyan-glow:hover {
+    background-color: #00b3e6;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 204, 255, 0.6);
+}
+
+/* Imaginea circulară pentru avatarul organizatorului */
+.organizer-avatar-img {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(0, 204, 255, 0.3);
+    /* Un halou cyan foarte subtil */
+}
+
+.btn-dark-map {
+    background-color: #020617;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+}
+
+.btn-dark-map:hover {
+    background-color: #111827;
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Lățime normală și aerisită pentru butoanele de admin pe Desktop */
+@media (min-width: 768px) {
+
+    .btn-admin-edit,
+    .btn-admin-delete {
+        padding: 8px 24px;
+    }
+}
+
+@media (max-width: 768px) {
+    #red-location {
+        display: none;
+    }
+}
+
+
+
+/* Rotește săgeata în sus când meniul este deschis */
+#editCategoryDropdownBtn[aria-expanded="true"] .category-arrow {
+    transform: rotate(-180deg);
+}

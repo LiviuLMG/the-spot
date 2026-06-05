@@ -1,0 +1,59 @@
+
+#careers-h1 {
+    font-size: 2.5rem !important;
+}
+#careers-p {
+    font-size: 1.1rem !important;
+}
+
+/* --- FUNDAL FIXED CU IMAGINE --- */
+.careers-page-wrapper {
+    position: relative;
+    background-image: url('../images/careers-bg.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
+.careers-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(2, 6, 23, 0.75), rgba(2, 6, 23, 1));
+    z-index: 1;
+}
+
+/* Stiluri pentru job-uri */
+.job-card {
+    background-color: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-left: 4px solid #00ccff; /* O bară laterală subtilă pentru design */
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.job-card:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+    transform: translateX(5px); /* Efect de glisare la hover */
+}
+
+
+
+/* Border cyan și background când e deschis */
+#careerDropdownBtn:focus,
+#careerDropdownBtn[aria-expanded="true"] {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    border-color: #00ccff !important;
+    box-shadow: 0 0 0 4px rgba(0, 204, 255, 0.15) !important;
+    outline: none;
+}
+
+/* Rotația săgeții */
+#careerDropdownBtn[aria-expanded="true"] .category-arrow {
+    transform: rotate(-180deg);
+}

@@ -1,0 +1,164 @@
+    body { 
+        background-color: #020617;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    ::selection {
+        background-color: #0ea5e9;
+        color: white;
+    }
+
+/* Taie numele fișierelor prea lungi și adaugă puncte de suspensie (...) */
+#file-name, 
+#edit-file-name, 
+[id^="filename-"] {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 65%; /* Ține textul în frâu, lăsând restul de spațiu pentru buton */
+    display: inline-block;
+}
+
+#btn-back-to-top {
+    /* Poziționarea de bază */
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 999;
+    
+    /* Aspect */
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-color: #00ccff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    box-shadow:0 0 9px 4px rgba(0, 204, 255, 0.4);
+    
+    /* --- ANIMAȚIE: Starea INIȚIALĂ (Ascuns) --- */
+    opacity: 0;                     /* Complet transparent */
+    transform: translateY(100px);   /* Împins 100px în jos, în afara ecranului */
+    pointer-events: none;           /* Nu se poate da click pe el când e ascuns */
+    
+    /* Definim tranziția lină pentru transform, opacity și background */
+    /* "cubic-bezier" îi dă un efect plăcut de 'pop-up' */
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                opacity 0.3s ease,
+                background-color 0.3s ease,
+                bottom 0.3s ease; /* Linia adăugată */
+}
+
+/* --- ANIMAȚIE: Starea ACTIVĂ (Vizibil) --- */
+/* Această clasă va fi adăugată cu JavaScript când scrolăm */
+#btn-back-to-top.show {
+    opacity: 1;                     /* Devine vizibil */
+    transform: translateY(0);       /* Revine la poziția normală (bottom: 30px) */
+    pointer-events: auto;           /* Devine clickabil */
+}
+
+/* Hover Effect - doar când este vizibil (.show) */
+#btn-back-to-top.show:hover {
+    background-color: #0099cc;
+    transform: translateY(-5px); /* Se ridică puțin la hover */
+}
+
+
+
+
+
+
+
+
+
+/* --- BUTON FLOATING ADD EVENT --- */
+/* --- BUTON FLOATING ADD EVENT --- */
+#btn-add-event {
+    position: fixed;
+    bottom: 30px;
+    right: 90px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    background-color: white;
+    color: #00ccff;
+    box-shadow: 0 0 9px 4px rgba(0, 0, 0, 0.15);
+    text-decoration: none;
+    z-index: 998;
+    
+    /* MODIFICARE CRITICĂ 1: Ascunde tot ce iese din formă */
+    overflow: hidden; 
+
+    /* Starea de ascundere la scroll */
+    opacity: 0;
+    transform: translateY(100px);
+    pointer-events: none;
+    
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+                    bottom 0.3s ease; /* Linia adăugată */
+;
+}
+
+/* Starea vizibilă la scroll */
+#btn-add-event.show {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+/* Elemente interne */
+#btn-add-event .icon,
+#btn-add-event .text {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transition: all 0.3s ease;
+    
+    /* MODIFICARE CRITICĂ 2: Textul și iconița nu interacționează cu mouse-ul */
+    pointer-events: none; 
+}
+
+/* Iconița (Vizibilă pe centru) */
+#btn-add-event .icon {
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+    opacity: 1;
+}
+
+/* Textul (Ascuns mai jos) */
+#btn-add-event .text {
+    transform: translate(-50%, 25px); /* E împins jos, dar acum e invizibil pt că iese din buton */
+    font-weight: bold;
+    font-size: 0.95rem;
+    opacity: 0;
+    white-space: nowrap;
+}
+
+/* --- EFECTUL LA HOVER --- */
+#btn-add-event.show:hover {
+    width: 130px;
+    background-color: #00ccff;
+    color: white;
+    box-shadow: 0 0 9px 4px rgba(0, 204, 255, 0.4);
+}
+
+/* La hover: iconița urcă (și e tăiată de overflow) */
+#btn-add-event.show:hover .icon {
+    opacity: 0;
+    transform: translate(-50%, -40px);
+}
+
+/* La hover: textul vine pe centru */
+#btn-add-event.show:hover .text {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+}
+
+
+/* Clasa nouă care ridică butoanele */
+#btn-back-to-top.lift-up,
+#btn-add-event.lift-up {
+    bottom: 90px; /* Le ridică deasupra textului. Dacă tot se suprapun, crește la 110px. */
+}

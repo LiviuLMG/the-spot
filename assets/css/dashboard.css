@@ -1,0 +1,169 @@
+.dashboard-container {
+    padding-top: 4rem;
+    min-height: 75vh;
+}
+
+.page-title {
+    color: #ffffff;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+/* --- CARDURI --- */
+.dark-card {
+    background-color: #0f172a;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    height: 100%;
+}
+
+/* --- AVATAR ȘI UPLOAD --- */
+.profile-avatar {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid rgba(255, 255, 255, 0.1);
+    background-color: #1e293b;
+}
+
+.avatar-edit-btn {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    background-color: #00ccff;
+    color: #020617;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 3px solid #0f172a; /* Creează un "spațiu" între buton și poză */
+}
+
+.avatar-edit-btn:hover {
+    background-color: #00b3e6;
+    transform: scale(1.1);
+}
+
+.tracking-wide {
+    letter-spacing: 2px;
+}
+
+/* --- TABS BOOTSTRAP RESCRISE --- */
+.custom-tabs {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.05);
+    border-radius: 0;
+}
+
+.custom-tabs .nav-link {
+    color: #64748b;
+    font-weight: 600;
+    border: none;
+    padding: 10px 20px;
+    background: transparent;
+    transition: all 0.3s ease;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px; /* Se suprapune perfect pe linia de jos */
+}
+
+.custom-tabs .nav-link:hover {
+    color: #cbd5e1;
+    border-color: transparent;
+}
+
+.custom-tabs .nav-link.active {
+    color: #00ccff;
+    background: transparent;
+    border-color: #00ccff;
+}
+
+/* --- INPUT-URI CU ICONIȚE ÎNĂUNTRU --- */
+.custom-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #94a3b8;
+    margin-bottom: 6px;
+}
+
+.input-group-custom {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-icon {
+    position: absolute;
+    left: 15px;
+    color: #64748b;
+    z-index: 5;
+}
+
+.custom-input.with-icon {
+    padding-left: 45px;
+}
+
+.custom-input {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: #ffffff !important;
+    border-radius: 8px;
+    padding: 0.7rem 1rem;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.custom-input:focus {
+    background-color: rgba(255, 255, 255, 0.08) !important;
+    border-color: #00ccff !important;
+    box-shadow: 0 0 0 4px rgba(0, 204, 255, 0.15) !important;
+    outline: none;
+}
+
+/* --- ALERTE CUSTOM --- */
+.alert-success-custom {
+    background-color: rgba(40, 192, 141, 0.15);
+    border: 1px solid rgba(40, 192, 141, 0.3);
+    color: #28c08d;
+}
+
+.alert-error-custom {
+    background-color: rgba(239, 68, 68, 0.15);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    color: #ef4444;
+}
+
+/* --- BUTOANE PRINCIPALE --- */
+.btn-cyan-glow {
+    background-color: #00ccff;
+    /* Am păstrat text-white aici dacă ai cerut să fie alb în css, 
+       deși e forțat și direct din HTML. */
+    border: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 204, 255, 0.4);
+}
+
+.btn-cyan-glow:hover {
+    background-color: #00b3e6;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 204, 255, 0.6);
+}
+
+/* --- RESPONSIVITATE BUTOANE SUBMIT --- */
+/* Pe mobil (implicit), lățimea e 100% */
+.custom-btn-responsive {
+    width: 100%;
+}
+
+/* Pe ecrane de la 768px în sus, lățimea e auto (cât conținutul + padding) */
+@media (min-width: 768px) {
+    .custom-btn-responsive {
+        width: auto;
+    }
+}

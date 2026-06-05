@@ -1,0 +1,301 @@
+/* --- FUNDALUL ȘI STRUCTURA MODALULUI --- */
+.modal-content {
+    box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5) !important;
+} 
+
+.glass-modal-content {
+    background: linear-gradient(to bottom, rgba(2, 6, 23, 0.75), rgba(17, 24, 39, 0.85));
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: #e2e8f0;
+}
+
+.glass-modal-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    padding: 1.25rem 1rem;
+}
+
+/* --- ETICHETE (LABELS) --- */
+.custom-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #94a3b8;
+    margin-bottom: 4px;
+}
+
+/* --- INPUT-URI (Casetele de text) --- */
+.custom-input {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: #ffffff !important;
+    border-radius: 8px;
+    padding: 0.6rem 1rem;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+/* Placeholder-ul din input */
+.custom-input::placeholder {
+    color: #64748b !important;
+    opacity: 1;
+}
+
+/* Când dai click în input (Focus) */
+.custom-input:focus {
+    background-color: rgba(255, 255, 255, 0.08) !important;
+    border-color: #00ccff !important;
+    box-shadow: 0 0 0 4px rgba(0, 204, 255, 0.15) !important;
+    outline: none;
+}
+
+/* Reparație pentru iconița de calendar din input-ul de tip 'date' pe fundal închis */
+.custom-input::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+/* --- BUTONUL DE SUBMIT --- */
+.custom-submit-btn {
+    background-color: #00ccff;
+    color: #020617;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.custom-submit-btn:hover {
+    background-color: #00b3e6;
+    color: #000;
+    box-shadow: 0 4px 15px rgba(0, 204, 255, 0.4);
+    transform: translateY(-2px);
+}
+
+/* --- GOOGLE MAPS AUTOCOMPLETE DARK THEME --- */
+.pac-container {
+    background-color: #111827 !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 8px !important;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5) !important;
+    color: #e2e8f0 !important;
+    font-family: inherit !important;
+    z-index: 10500 !important; /* Îl ține deasupra pop-up-ului */
+}
+
+/* Elementele individuale din lista Google */
+.pac-item {
+    border-top: 1px solid rgba(255, 255, 255, 0.05) !important;
+    color: #94a3b8 !important;
+    padding: 10px 15px !important;
+    cursor: pointer !important;
+}
+
+.pac-item:hover {
+    background-color: rgba(0, 204, 255, 0.1) !important;
+}
+
+/* Textul principal sugerat */
+.pac-item-query {
+    color: #e2e8f0 !important;
+    font-weight: 600 !important;
+}
+
+/* Partea de text care se potrivește cu ce ai scris tu */
+.pac-matched {
+    color: #00ccff !important;
+}
+
+/* Ascunde logo-ul "Powered by Google" pt un UI curat */
+.pac-logo::after {
+    display: none !important;
+}
+
+
+
+
+
+/* --- ASCUNDE SĂGEȚILE PENTRU INPUT-UL DE TIP NUMĂR --- */
+/* Pentru Chrome, Safari, Edge, Opera */
+.custom-input[type="number"]::-webkit-outer-spin-button,
+.custom-input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Pentru Firefox */
+.custom-input[type="number"] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+
+
+/* --- CUSTOM FILE UPLOAD --- */
+.custom-file-upload label:hover {
+    background-color: rgba(255, 255, 255, 0.08) !important;
+    border-color: #00ccff !important;
+}
+
+#pop-up-screen-buttons{    
+    color: white;
+    transform: none;
+    letter-spacing: 0.5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* --- AIR DATEPICKER DARK THEME (FORCED OVERRIDE) --- */
+.air-datepicker {
+    background: #111827 !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5) !important;
+    color: #e2e8f0 !important;
+    font-family: inherit !important;
+    z-index: 1060 !important; /* Peste modal */
+}
+
+/* Header-ul cu luna și butoanele de navigare */
+.air-datepicker-nav {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.air-datepicker-nav--title, 
+.air-datepicker-nav--action {
+    color: #e2e8f0 !important;
+    border-radius: 4px !important;
+}
+
+.air-datepicker-nav--action:hover,
+.air-datepicker-nav--title:hover {
+    background: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Numele zilelor (Lu, Ma, Mi...) */
+.air-datepicker-body--day-name {
+    color: #94a3b8 !important;
+}
+
+/* Zilele normale */
+.air-datepicker-cell {
+    color: #e2e8f0 !important;
+    border-radius: 4px !important;
+}
+
+/* Ziua selectată */
+.air-datepicker-cell.-selected- {
+    background: #00ccff !important;
+    color: #020617 !important;
+    font-weight: bold !important;
+}
+
+/* Hover pe zile */
+.air-datepicker-cell:hover:not(.-selected-) {
+    background: rgba(0, 204, 255, 0.15) !important;
+    color: #00ccff !important;
+}
+
+/* Zilele din alte luni (inactive) */
+.air-datepicker-cell.-other-month- {
+    color: #334155 !important;
+}
+
+/* Zona de selecție a orei */
+.air-datepicker-time {
+    border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.air-datepicker-time--current-hours,
+.air-datepicker-time--current-minutes {
+    color: #00ccff !important;
+    font-weight: bold !important;
+}
+
+/* Slider-ele pentru oră și minut */
+.air-datepicker-time--row input[type='range']::-webkit-slider-thumb {
+    background: #00ccff !important;
+}
+
+.air-datepicker-time--row input[type='range']::-webkit-slider-runnable-track {
+    background: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* --- ZILELE ȘI LUNILE DEZACTIVATE (TRECUTE) --- */
+.air-datepicker-cell.-disabled- {
+    color: #475569 !important; /* Un gri închis, stins (slate-600) */
+    cursor: not-allowed !important; /* Schimbă mouse-ul în semnul de 'interzis' */
+    opacity: 0.5 !important;
+}
+
+/* Anulăm complet efectul de hover pe zilele trecute */
+.air-datepicker-cell.-disabled-:hover {
+    background: transparent !important;
+    color: #475569 !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* --- PREVIZUALIZARE IMAGINE --- */
+#image-preview {
+    max-height: 200px;
+    object-fit: contain; /* Păstrează proporțiile imaginii fără să o taie */
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    background-color: rgba(0, 0, 0, 0.2); /* Un fundal subtil în caz că poza are transparență */
+    padding: 4px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* --- CUSTOM GLASS TOAST --- */
+.custom-glass-toast {
+    background: rgba(17, 24, 39, 0.95);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    color: #e2e8f0;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+.toast-success {
+    border-left: 4px solid #00ccff !important;
+}
+
+.toast-error {
+    border-left: 4px solid #ef4444 !important; /* Roșu pentru erori */
+}
+
+/* Iconițele din interiorul toast-ului */
+.toast-icon {
+    font-size: 1.2rem;
+    margin-right: 12px;
+}

@@ -1,0 +1,45 @@
+Options -Indexes
+
+<Files ".env">
+    Require all denied
+</Files>
+
+<Files ".htaccess">
+    Require all denied
+</Files>
+
+<FilesMatch "\.(sql|log|txt|zip|bak)$">
+    Require all denied
+</FilesMatch>
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Forțare HTTPS
+    RewriteCond %{HTTPS} off
+    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+    # Ascunde index.php
+    RewriteCond %{THE_REQUEST} /index\.php [NC]
+    RewriteRule ^index\.php$ / [R=301,L]
+
+    # Clean URLs user-facing
+    RewriteRule ^my-account/?$ user/dashboard.php [L,QSA]
+    RewriteRule ^my-events/?$ user/my-events.php [L,QSA]
+    RewriteRule ^my-tickets/?$ user/my-tickets.php [L,QSA]
+    RewriteRule ^register/?$ register.php [L,QSA]
+    RewriteRule ^search/?$ search.php [L,QSA]
+    RewriteRule ^admin/?$ admin/index.php [L,QSA]
+
+    # Clean URL pentru event.php?id=14
+    RewriteRule ^event/([0-9]+)/?$ event.php?id=$1 [L,QSA]
+
+    RewriteRule ^reset-password/?$ reset-password.php [L,QSA]
+    RewriteRule ^verify-email/?$ verify-email.php [L,QSA]
+</IfModule>
+
+<IfModule mod_headers.c>
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>

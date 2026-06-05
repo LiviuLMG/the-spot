@@ -1,0 +1,289 @@
+    html {
+    scroll-behavior: smooth;
+}
+
+
+/* Taie textul elegant după exact 3 rânduri */
+.desc-clamp {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3; 
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+.hero-section {
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('../images/hero-concert.jpg'); 
+    background-size: cover; 
+    background-attachment: fixed; /* Parallax pentru Desktop și Android */
+    background-position: center;
+    position: relative;
+    height: 80vh;
+    height: 80svh; /* sVH (Small Viewport Height) ignoră bara de adrese a Safari-ului, ținând site-ul stabil */
+
+    display: flex;             
+    align-items: center;       
+    justify-content: center;   
+}
+
+/* --- HACK CRITIC PENTRU iOS (iPhone / iPad) --- */
+/* Apple Safari are un bug cu 'background-attachment: fixed'. Această regulă anulează efectul doar pe dispozitivele Apple, salvând imaginea. */
+@supports (-webkit-touch-callout: none) {
+    .hero-section {
+        background-attachment: scroll;
+    }
+}
+
+.hero-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+.city-name-gradient {
+    background: linear-gradient(to right, #0ea5e9 0%, #d946ef 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: bold;
+}
+
+#explore-events-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    padding: 1rem 2rem;
+    border-radius: 20px;
+}
+
+#arrow {
+    font-size: 0.85rem;
+}
+
+#events-section {
+    scroll-margin-top: 100px; /* Ajustează valoarea în funcție de înălțimea header-ului tău */
+}
+
+.hero-section::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 25%;
+    /* Am schimbat rgba(0,0,0,0) în rgba(255,255,255,0) pentru a evita un alt bug Safari care randează transparentul ca negru */
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+
+
+.h2-events {
+    padding-bottom: 10px; /* Spațiu pentru scrollbar dacă apare */
+}
+/* Containerul pentru butoane (scrollabil pe mobil) */
+.category-scroller {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 10px; /* Spațiu pentru scrollbar dacă apare */
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+.category-scroller::-webkit-scrollbar {
+    display: none; /* Ascunde scrollbar pe Chrome/Safari */
+}
+
+/* Stilul Butonului de Filtru */
+.btn-filter {
+    background-color: #f3f4f6; /* Gri deschis */
+    color: #64748b;            /* Gri text */
+    border: none;
+    border-radius: 50px;       /* Rotunjire completă */
+    padding: 8px 24px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    white-space: nowrap;       /* Să nu se rupă textul */
+}
+
+.btn-filter:hover {
+    background-color: #e2e8f0;
+    color: #0f172a;
+    transform: translateY(-1px);
+}
+
+/* Stilul când butonul este ACTIV (Selectat) */
+.btn-filter.active {
+    background-color: #00ccff; /* Cyan-ul tău */
+    color: #000;               /* Text negru */
+    box-shadow:0 4px 5px 1px rgba(0, 204, 255, 0.3); /* Umbră strălucitoare */
+}
+
+
+
+
+
+
+
+/* Container-ul principal al imaginii de pe card */
+.img-wrapper {
+    overflow: hidden; 
+    height: 220px;    
+    border-top-left-radius: 16px;  
+    border-top-right-radius: 16px; 
+    position: relative;
+    background-color: #0f172a; /* Fundal de siguranță (dark navy) */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 1. Fundalul fals (blurat) */
+.blurred-bg-main {
+    position: absolute;
+    top: -20px; left: -20px; right: -20px; bottom: -20px; /* Mai mare pt a nu lăsa margini clare după blur */
+    background-size: cover;
+    background-position: center;
+    filter: blur(15px) brightness(60%); /* Luminozitate scăzută pt a scoate poza în față */
+    z-index: 1; /* Ultimul strat */
+    transition: transform 0.5s ease; /* Animație fină la hover */
+}
+
+/* 2. Imaginea reală din centru */
+.card-img-top {
+    width: 100%;
+    height: 100%; 
+    object-fit: contain; /* Păstrează forma originală a pozei (portret/landscape) */
+    position: relative;
+    z-index: 2; /* Peste fundalul blurat */
+    transition: transform 0.5s ease; 
+}
+
+/* --- EFECTE DE HOVER --- */
+
+.card {
+    border: 0;
+    box-shadow: 0 4px 16px 2px rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+    overflow: hidden;   
+    transition: all 0.3s ease-in-out;
+}
+
+/* Ridicare card + Umbră */
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Zoom pe fundalul blurat */
+.card:hover .blurred-bg-main {
+    transform: scale(1.1); 
+}
+
+/* Zoom subtil pe imaginea principală */
+.card:hover .card-img-top {
+    transform: scale(1.05); 
+}
+
+
+
+
+#category-badge {
+    padding-left: 10px ; 
+    padding-right: 10px ;
+    font-size: 0.65rem;
+    color: #00ccff;
+    border: 1px solid #0086a8;
+}
+
+#price-badge{
+    color: #00ccff;
+    background-color: #e5f9ff !important;
+}
+#price-badge-free{
+    color: #28c08d;   
+
+    background-color: #e7f8f2 !important;
+}
+
+
+/* --- DUAL RANGE SLIDER --- */
+.price-range-container {
+    width: 100%;
+    max-width: 280px;
+    background-color: transparent;
+    padding: 10px 15px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.price-val-text {
+    color: #00ccff;
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.range-slider {
+    position: relative;
+    width: 100%;
+    height: 6px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.range-track {
+    position: absolute;
+    height: 100%;
+    background: linear-gradient(to right, #0ea5e9 10%, #d946ef 100%);
+    border-radius: 5px;
+    z-index: 1;
+}
+
+.range-slider input[type="range"] {
+    position: absolute;
+    width: 100%;
+    height: 6px;
+    top: -2px; /* Ajustat pentru a centra sliderul invizibil */
+    -webkit-appearance: none;
+    appearance: none;
+    background: none;
+    pointer-events: none; /* Lasă click-urile să treacă prin inputul invizibil */
+    z-index: 2;
+    margin: 0;
+}
+
+/* Butoanele (Thumbs) pe care pui degetul */
+.range-slider input[type="range"]::-webkit-slider-thumb {
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    background-color: #00ccff;
+    border: 2px solid #0f172a;
+    pointer-events: auto; /* Activează click-ul doar pe buton */
+    -webkit-appearance: none;
+    box-shadow: 0 0 10px rgba(0, 204, 255, 0.5);
+    cursor: pointer;
+}
+
+.range-slider input[type="range"]::-moz-range-thumb {
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    background-color: #00ccff;
+    border: 2px solid #0f172a;
+    pointer-events: auto;
+    box-shadow: 0 0 10px rgba(0, 204, 255, 0.5);
+    cursor: pointer;
+}

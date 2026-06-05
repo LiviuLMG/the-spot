@@ -1,0 +1,226 @@
+/* --- CUSTOM SELECT (Drop-down) DARK MODE --- */
+
+/* 1. Designul opțiunilor când se deschide meniul */
+select.custom-input option {
+    background-color: #0f172a; /* Fundal navy/închis */
+    color: #ffffff; /* Text alb pentru categorii */
+    padding: 10px;
+}
+
+/* 2. Culoarea pentru "Choose category..." în interiorul listei deschise */
+select.custom-input option:disabled {
+    color: #64748b;
+}
+
+/* 3. SECRETUL: Culoarea gri "placeholder" CÂND caseta e închisă și neatinsă */
+select.custom-input:invalid {
+    color: #64748b !important; /* Același gri ca la restul placeholder-elor */
+}
+
+/* 4. Text alb abia DUPĂ ce utilizatorul a ales o categorie reală */
+select.custom-input:valid {
+    color: #ffffff !important;
+}
+
+/* CSS specific pentru Footer (îl poți muta în main.css) */
+.custom-footer {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    background: linear-gradient(to top, #020617, #111827);
+    color: #e2e8f0;
+}
+.footer-heading {
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+}
+.footer-text {
+    color: #94a3b8;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+.footer-link {
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 0.9rem;
+    display: block;
+    margin-bottom: 0.85rem;
+    transition: color 0.3s ease;
+}
+.footer-link:hover {
+    color: #00ccff; /* Cyan-ul tău */
+}
+.social-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #94a3b8;
+    border-radius: 8px; /* Pătrat rotunjit ca în poză */
+    margin-right: 10px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+.social-btn:hover {
+    background-color: #00ccff;
+    color: #fff;
+    transform: translateY(-2px);
+}
+.footer-bottom-link {
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 0.85rem;
+    margin-left: 1.5rem;
+    transition: color 0.3s ease;
+}
+.footer-bottom-link:hover {
+    color: #ffffff;
+}
+.footer-divider {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+
+
+
+
+
+
+
+/* --- CUSTOM GLASS DROPDOWN PENTRU CATEGORII --- */
+.glass-dropdown-menu {
+    background: rgba(15, 23, 42, 0.95) !important;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 12px;
+    padding: 0rem;
+    max-height: 220px;
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+.glass-dropdown-menu .dropdown-item {
+    color: #e2e8f0;
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    font-size: 0.95rem;
+}
+
+.glass-dropdown-menu .dropdown-item:hover,
+.glass-dropdown-menu .dropdown-item:focus {
+    background-color: rgba(0, 204, 255, 0.15); /* Fundal cyan transparent */
+    color: #00ccff; /* Text cyan */
+    transform: translateX(5px); /* Glisează ușor la dreapta când treci cu mouse-ul */
+}
+
+/* Scrollbar subțire și elegant pentru lista de categorii */
+.glass-dropdown-menu::-webkit-scrollbar {
+    width: 6px;
+}
+.glass-dropdown-menu::-webkit-scrollbar-track {
+    background: transparent;
+}
+.glass-dropdown-menu::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+}
+
+
+/* --- FOCUS ȘI ANIMAȚIE PENTRU CATEGORY DROPDOWN --- */
+
+/* Border-ul cyan și fundalul când apeși pe el */
+#categoryDropdownBtn:focus,
+#categoryDropdownBtn[aria-expanded="true"] {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    border-color: #00ccff !important;
+    box-shadow: 0 0 0 4px rgba(0, 204, 255, 0.15) !important;
+    outline: none;
+}
+
+/* Rotește săgeata în sus când meniul este deschis */
+#categoryDropdownBtn[aria-expanded="true"] .category-arrow {
+    transform: rotate(-180deg);
+}
+
+
+
+/* --- ANIMAȚIE STIL HEADER PENTRU CATEGORII --- */
+/* --- ANIMAȚIE STIL HEADER PENTRU CATEGORII --- */
+.dropdown-menu.glass-dropdown-menu {
+    display: block !important; 
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-15px) scaleY(0.95);
+    transform-origin: top center; 
+    /* La închidere: o tranziție simplă și directă, fără 'all' */
+    transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s ease;
+}
+
+.dropdown-menu.glass-dropdown-menu.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scaleY(1);
+    /* La deschidere: curba complexă pentru efectul fluid */
+    transition: opacity 0.2s cubic-bezier(0.165, 0.84, 0.44, 1), transform 0.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+/* Animația elementelor din listă (glisare din stânga) */
+.dropdown-menu.glass-dropdown-menu li {
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.dropdown-menu.glass-dropdown-menu.show li {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Efectul de cascadă (stagger) - apar pe rând */
+.dropdown-menu.glass-dropdown-menu.show li:nth-child(1) { transition-delay: 0.05s; }
+.dropdown-menu.glass-dropdown-menu.show li:nth-child(2) { transition-delay: 0.10s; }
+.dropdown-menu.glass-dropdown-menu.show li:nth-child(3) { transition-delay: 0.15s; }
+.dropdown-menu.glass-dropdown-menu.show li:nth-child(4) { transition-delay: 0.20s; }
+.dropdown-menu.glass-dropdown-menu.show li:nth-child(5) { transition-delay: 0.25s; }
+.dropdown-menu.glass-dropdown-menu.show li:nth-child(6) { transition-delay: 0.30s; }
+.dropdown-menu.glass-dropdown-menu.show li:nth-child(7) { transition-delay: 0.35s; }
+.dropdown-menu.glass-dropdown-menu.show li:nth-child(8) { transition-delay: 0.40s; }
+.dropdown-menu.glass-dropdown-menu.show li:nth-child(9) { transition-delay: 0.45s; }
+.dropdown-menu.glass-dropdown-menu.show li:nth-child(10) { transition-delay: 0.50s; }
+/* Dacă ai mai mult de 10 categorii, poți adăuga rânduri în continuare */
+
+
+
+
+
+
+/* --- SCROLL PENTRU LISTA DE ORAȘE DIN FOOTER --- */
+#footer-cities-list {
+    max-height: 140px; /* Limitează înălțimea la aprox 4-5 orașe */
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 10px; /* Spațiu mic să nu se lipească textul de scrollbar */
+}
+
+/* Stilizare scrollbar (design dark minimalist) */
+#footer-cities-list::-webkit-scrollbar {
+    width: 4px; /* Mai subțire pentru finețe */
+}
+
+#footer-cities-list::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 10px;
+}
+
+#footer-cities-list::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+}
+
+#footer-cities-list::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}

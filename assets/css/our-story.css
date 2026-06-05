@@ -1,0 +1,69 @@
+
+#story-h1 {
+    font-size: 2.5rem !important;
+}
+#story-p {
+    font-size: 1.1rem !important;
+}
+
+@media (min-width: 768px) {
+    .p-md-5 {
+        padding: 2rem !important;
+    }
+}
+
+/* --- FUNDAL FIXED PENTRU STORY --- */
+.story-page-wrapper {
+    position: relative;
+    background-image: url('../images/our-story-bg.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
+.story-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Un gradient un pic mai dens ca să iasă textul în evidență */
+    background: linear-gradient(to bottom, rgba(2, 6, 23, 0.85), rgba(2, 6, 23, 1));
+    z-index: 1;
+}
+
+.story-content {
+    z-index: 2;
+}
+
+/* --- STILIZARE BLOCURI DE TEXT --- */
+.story-block {
+    background-color: rgba(15, 23, 42, 0.6) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-left: 4px solid transparent;
+    transition: all 0.4s ease;
+}
+
+.story-block:nth-child(1) { border-left-color: #f59e0b; /* Warning/Orange */ }
+.story-block:nth-child(2) { border-left-color: #00ccff; /* Info/Cyan */ }
+.story-block:nth-child(3) { border-left-color: #28c08d; /* Success/Green */ }
+
+.story-block:hover {
+    background-color: rgba(15, 23, 42, 0.8) !important;
+    transform: translateX(10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.story-icon {
+    background-color: rgba(255, 255, 255, 0.05);
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+}

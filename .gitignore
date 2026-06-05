@@ -1,0 +1,21 @@
+# fisiere cu variabile de mediu si parole
+.env
+
+# fisiere incarcate de utilizatori (poze, avatare)
+uploads/*
+!uploads/.gitkeep
+
+# loguri si exporturi de baze de date
+*.log
+*.sql
+!database/schema.sql
+*.zip
+*.bak
+
+# fisiere ascunse generate de Windows
+.DS_Store
+Thumbs.db
+
+# fisiere generate de vsc
+.vscode/
+.idea/

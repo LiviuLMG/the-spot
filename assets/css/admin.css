@@ -1,0 +1,109 @@
+.admin-container {
+    padding-top: 4rem;
+    min-height: 75vh;
+}
+
+.page-title {
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+/* --- CARDURI GENERICE --- */
+.dark-card {
+    background-color: #0f172a;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    height: 100%;
+}
+
+/* --- STAT CARD (Sus) --- */
+.stat-card {
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.stat-icon-wrapper {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* --- TABEL CUSTOM --- */
+.table-custom {
+    --bs-table-bg: transparent;
+    --bs-table-color: #e2e8f0;
+    --bs-table-border-color: rgba(255, 255, 255, 0.05);
+    --bs-table-hover-bg: rgba(255, 255, 255, 0.03);
+}
+
+.table-custom th {
+    color: #64748b;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.table-custom td {
+    padding: 15px 10px;
+    vertical-align: middle;
+}
+
+/* --- BUTOANE MENU QUICK ACTION --- */
+.btn-admin-action {
+    background-color: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    color: #e2e8f0;
+    border-radius: 12px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-admin-action:not(:disabled):hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateX(5px);
+    color: #fff;
+}
+
+.btn-admin-action:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+
+
+.admin-table-scroller {
+    max-height: 450px; 
+    overflow-y: auto;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.admin-table-scroller thead th {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    border-bottom: none;
+}
+
+.admin-table-scroller::-webkit-scrollbar {
+    width: 6px;
+}
+.admin-table-scroller::-webkit-scrollbar-track {
+    background: transparent;
+}
+.admin-table-scroller::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+}
+.admin-table-scroller::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}

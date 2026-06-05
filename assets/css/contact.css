@@ -1,0 +1,57 @@
+.stat-icon-wrapper{
+    background-color: rgba(0, 204, 255, 0.15); 
+    width: 35px; 
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.stat-icon-wrapper i{
+    color: #00ccff;
+    font-size: 15px;
+}
+#contact-h1{
+    font-size: 2.5rem !important;
+}
+#contact-p{
+    font-size: 1rem !important;
+}
+
+
+/* --- FUNDAL FIXED CU IMAGINE --- */
+.contact-page-wrapper {
+    position: relative;
+    /* Aici specifici numele imaginii generate de AI */
+    background-image: url('../images/contact-bg.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Asta ține poza fixă la scroll */
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
+/* --- GRADIENT OVERLAY --- */
+.contact-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Gradient de sus în jos: mai transparent sus ca să se vadă poza, foarte întunecat jos ca să facă blend cu footer-ul */
+    background: linear-gradient(to bottom, rgba(2, 6, 23, 0.7), rgba(2, 6, 23, 1));
+    z-index: 1;
+}
+
+.contact-content {
+    z-index: 2; /* Asigură-te că formularul este PESTE gradient */
+}
+
+
+
+/* Rotește săgeata în sus când meniurile sunt deschise (grupate) */
+#categoryDropdownBtn[aria-expanded="true"] .category-arrow,
+#subjectDropdownBtn[aria-expanded="true"] .category-arrow,
+#careerDropdownBtn[aria-expanded="true"] .category-arrow {
+    transform: rotate(-180deg);
+}
